@@ -12,6 +12,7 @@
     "start:dev": "nodemon --inspect=0.0.0.0:9229",
     "start": "node /src/dist/src/index.js",
     "build": "tsc --project tsconfig-build.json",
+    "test": "jest",
     "test:cov": "jest --coverage",
     "test:watch": "NODE_ENV=test jest --watchAll",
     "test:e2e": "NODE_ENV=test jest --config ./e2e/jest.config.js --detectOpenHandles",
