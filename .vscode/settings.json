@@ -1,7 +1,10 @@
 {
   "jest.runMode": "on-demand",
   "cSpell.words": [
+    "accesscontrol",
+    "commitlint",
     "openapi",
+    "postrelease",
     "Telio",
     "typeorm"
 ],
