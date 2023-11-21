@@ -13,7 +13,7 @@
     "start": "node /src/dist/src/index.js",
     "build": "tsc --project tsconfig-build.json",
     "test": "jest",
-    "test:cov": "jest --coverage",
+    "test:cov": "jest --ci --coverage && codecov",
     "test:watch": "NODE_ENV=test jest --watchAll",
     "test:e2e": "NODE_ENV=test jest --config ./e2e/jest.config.js --detectOpenHandles",
     "format": "prettier --write '**/*.ts'",
