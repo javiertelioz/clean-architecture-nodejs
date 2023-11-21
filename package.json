@@ -18,7 +18,8 @@
     "format": "prettier --write '**/*.ts'",
     "lint": "./node_modules/eslint/bin/eslint.js src/ test/ e2e/ --ext .ts --fix",
     "release": "standard-version",
-    "postrelease": "git push --follow-tags origin master && npm publish"
+    "postrelease": "git push --follow-tags origin master && npm publish",
+    "prepare": "husky install"
   },
   "dependencies": {
     "accesscontrol": "2.2.1",
