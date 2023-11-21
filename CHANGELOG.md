@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/javiertelioz/clean-architecture-nodejs/compare/v1.1.0...v1.2.0) (2023-11-21)
+
+
+### Features
+
+* add hook for git ([8d1d425](https://github.com/javiertelioz/clean-architecture-nodejs/commit/8d1d4256bb2c332786e938dc47e7ca9310ceb29a))
+* add test command ([89188cd](https://github.com/javiertelioz/clean-architecture-nodejs/commit/89188cd366aed41622340f30196203f213c9da81))
+
 ## [1.1.0](https://github.com/javiertelioz/clean-architecture-nodejs/compare/v1.0.3...v1.1.0) (2023-11-21)
 
 
