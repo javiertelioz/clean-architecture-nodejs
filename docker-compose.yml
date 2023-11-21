@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+
+  # Database - MongoDB
+  # See https://www.mongodb.com/docs for more information
+  mongodb:
+    image: mongo:7.0-jammy
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb_data:/data/db
+
+  # Database - Postgresql
+  # See https://www.postgresql.org/docs for more information
+  postgres:
+    image: "postgres:13-alpine"
+    environment:
+      TZ: "America/Mexico_City"
+      PGTZ: "America/Mexico_City"
+      POSTGRES_PASSWORD: password
+      PGDATA: /var/lib/postgresql/data/user
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    ports:
+      - "5432:5432"
+
+  # Database - Redis
+  # See https://redis.io/docs for more information
+  redis:
+    image: redis:alpine3.18
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/root/redis
+    environment:
+      - REDIS_PASSWORD=password
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=16
+
+volumes:
+  postgresql_data:
+  mongodb_data:
+  redis_data:

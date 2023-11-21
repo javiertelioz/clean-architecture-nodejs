@@ -1,0 +1,86 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint/eslint-plugin",
+    "prettier",
+    "@typescript-eslint"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "project": "tsconfig.json"
+  },
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
+  "ignorePatterns": [".eslintrc.js"],
+  "rules": {
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-use-before-define": 0,
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/no-empty-function": 0,
+    "no-unused-vars": 0,
+    "node/no-unsupported-features/es-syntax": 0,
+    "no-useless-constructor": 0,
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "of|returns|type|queryRunner|context"
+      }
+    ],
+    "@typescript-eslint/no-empty-interface": [
+      "error",
+      {
+        "allowSingleExtends": true
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          [
+            "index",
+            "sibling",
+            "parent",
+            "object"
+          ]
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "builtin"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "@nestjs/**",
+            "group": "external",
+            "position": "after"
+          }
+        ],
+        "newlines-between": "always-and-inside-groups",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
