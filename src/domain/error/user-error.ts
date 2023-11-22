@@ -18,28 +18,4 @@ export class UserError extends Error {
   public static updateError(): UserError {
     return new UserError('THERE_WAS_AN_ERROR');
   }
-
-  public static alreadyVerified(): UserError {
-    return new UserError('USER_IS_ALREADY_VERIFIED');
-  }
-
-  public static unverifiedAccount(): UserError {
-    return new UserError('UNVERIFIED_ACCOUNT');
-  }
-
-  public static invalidCodeResetPassword(): UserError {
-    return new UserError('INVALID_CODE_TO_RESET_PASSWORD');
-  }
-
-  public static invalidCodeSmsCode(): UserError {
-    return new UserError('INVALID_SMS_CODE');
-  }
-
-  public static invalidCodeConfirmAccount(): UserError {
-    return new UserError('INVALID_CODE_TO_CONFIRM_ACCOUNT');
-  }
-
-  public static invalidToken(): UserError {
-    return new UserError('ACCOUNT_INVALID_TOKEN');
-  }
 }

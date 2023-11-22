@@ -1,0 +1,35 @@
+{
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "collectCoverage": true,
+  "roots": [
+    "<rootDir>"
+  ],
+  "coverageDirectory": "./coverage/",
+  "coveragePathIgnorePatterns": [
+    "node_modules",
+    "e2e",
+    "src/infrastructure/orm/typeorm/index.ts",
+    "src/infrastructure/orm/mongoose/index.ts",
+    "<rootDir>/src/infrastructure/repositories/user/"
+  ],
+  "testPathIgnorePatterns": [
+    "node_modules",
+    "e2e"
+  ],
+  "coverageReporters": [
+    "json",
+    "lcov",
+    "text",
+    "clover"
+  ],
+  "verbose": true,
+  "coverageThreshold": {
+    "global": {
+      "branches": 90,
+      "functions": 90,
+      "lines": 90,
+      "statements": 90
+    }
+  }
+}
