@@ -1,5 +1,7 @@
 # API following Clean Architecture principles
 
+[![codecov](https://codecov.io/gh/javiertelioz/clean-architecture-nodejs/graph/badge.svg?token=LR6U1R6Z5D)](https://codecov.io/gh/javiertelioz/clean-architecture-nodejs)
+
 ## Getting started (< 2mn)
 
 ```bash
@@ -31,37 +33,41 @@ The application follows the Uncle Bob "[Clean Architecture](https://8thlight.com
 ### Project anatomy
 
 ```
-app
-  └ src                              → Application sources
-    └ application                   → Application services layer
-       └ security                   → Security tools interfaces (ex: AccessTokenManager.js, to generate and decode OAuth access token)
-       └ use_cases                  → Application business rules
-    └ domain                        → Enterprise core business layer such as domain model objects (Aggregates, Entities, Value Objects) and repository
-       └ entities                   → entities definitions
-       └ repository                 → repository definitions
-       └ aggregates                 → Aggregates definitions
-    └ infrastructure                → Frameworks, drivers and tools such as Database, the Web Framework, mailing/logging/glue code etc.
-       └ logger                     → Logger
-       └ orm                        → Database ORMs middleware (Sequelize for SQLite3 or PostgreSQL, Mongoose for MongoDB)
-          └ mongoose                → Mongoose client and schemas
-          └ sequelize               → Sequelize client and models
-          └ redis                   → redis client and models
-       └ repositories               → Implementation of domain repository interfaces
-       └ security                   → Security tools implementations (ex: JwtAccessTokenManager)
-    └ interfaces                    → Adapters and formatters for use cases and entities to external agency such as Database or the Web
-       └ web                        → Web server configuration (server, routes, plugins, etc.)
-          └ server                  → Express Web server
-          └ controllers             → route handlers
-          └ routes                  → route definitions
-          └ exceptions              → exceptions definitions
-          └ middleware              → middleware definitions
-          └ validation              → validation definitions
-          └ plugins                 → plugins definitions
-          └ serializers             → Converter objects that transform outside objects (ex: HTTP request payload) to inside objects (ex: Use Case request object)
-    └ index.ts                      → Main application entry point
- └ node_modules (generated)         → NPM dependencies
- └ test                             → Source folder for unit or functional tests
- └ e2e                              → Source folder for e2e tests
+project folder
+├── CHANGELOG.md                   # Project's change log
+├── Dockerfile                     # Dockerfile for production
+├── LICENSE                        # Project's license file
+├── README.md                      # General project documentation
+├── commitlint.config.js           # Configuration for commitlint
+├── dev.Dockerfile                 # Dockerfile for development
+├── docker-compose.yml             # Docker Compose configuration
+├── e2e                            # End-to-end tests
+│   ├── jest.config.js
+│   ├── resources
+│   │   └── AuthController.test.ts
+│   └── setup.ts
+├── jest.config.json               # Jest configuration
+├── nodemon.json                   # Configuration for Nodemon
+├── package-lock.json              # NPM dependency version lock
+├── package.json                   # NPM project configurations
+├── src                            # Application source code
+│   ├── application                # Application services layer
+│   ├── domain                     # Core domain business layer
+│   ├── infrastructure             # Frameworks, drivers, and tools
+│   └── interfaces                 # Adapters and formatters for use cases and entities
+├── test                           # Unit and functional tests
+│   ├── application
+│   │   └── use_cases
+│   ├── infrastructure
+│   │   ├── repositories
+│   │   └── security
+│   └── interfaces
+│       ├── controllers
+│       ├── pagination.test.ts
+│       └── serializers
+├── tsconfig-build.json            # TypeScript configuration for building
+└── tsconfig.json                  # TypeScript configuration for the project
+
 ```
 
 ### Flow of Control
