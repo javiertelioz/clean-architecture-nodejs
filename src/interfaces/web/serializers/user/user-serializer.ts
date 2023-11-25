@@ -31,8 +31,8 @@ export default class UserSerializer implements BaseSerializer {
   singleSerialize(entity: any): any {
     return {
       id: entity.id,
-      firstName: entity.firstname,
-      lastName: entity.lastname,
+      firstName: entity.firstName,
+      lastName: entity.lastName,
       gender: entity.gender,
       email: entity.email,
       joined: entity.createdAt,

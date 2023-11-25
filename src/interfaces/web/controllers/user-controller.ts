@@ -2,10 +2,10 @@ import { Request, Response, NextFunction } from 'express';
 import httpStatus from 'http-status';
 
 import CreateUser from '../../../application/use_cases/user/create-user';
-import RemoveUser from '../../../application/use_cases/user/delete-user-by-id';
+import DeleteUserById from '../../../application/use_cases/user/delete-user-by-id';
 import GetAllUsers from '../../../application/use_cases/user/get-all-users';
-import GetUser from '../../../application/use_cases/user/get-user-by-id';
-import UpdateUser from '../../../application/use_cases/user/update-user';
+import GetUserById from '../../../application/use_cases/user/get-user-by-id';
+import UpdateUserById from '../../../application/use_cases/user/update-user-by-id';
 
 import UserRepositoryMongo from '../../../infrastructure/repositories/user/user-repository-mongo';
 import { UserRepositorySQL } from '../../../infrastructure/repositories/user/user-repository-sql';
@@ -33,7 +33,7 @@ export default class UserController {
     const { id } = req.params;
 
     try {
-      const user = await GetUser(id, new UserRepositorySQL());
+      const user = await GetUserById(id, new UserRepositorySQL());
       const userSerializer = UserSerializer.getInstance();
 
       res.send(userSerializer.singleSerialize(user));
@@ -56,7 +56,7 @@ export default class UserController {
     const { params, body } = req;
 
     try {
-      await UpdateUser(params.id, body, new UserRepositorySQL());
+      await UpdateUserById(params.id, body, new UserRepositorySQL());
 
       return res.status(httpStatus.NO_CONTENT).send();
     } catch (error) {
@@ -68,7 +68,7 @@ export default class UserController {
     const { id } = req.params;
 
     try {
-      await RemoveUser(id, new UserRepositorySQL());
+      await DeleteUserById(id, new UserRepositorySQL());
       return res.status(httpStatus.NO_CONTENT).send();
     } catch (error) {
       next(new HttpException(httpStatus.NOT_FOUND, error.message));
