@@ -28,14 +28,14 @@ describe('Serialization', () => {
     it('should serialize a single entity correctly', () => {
       const user = {
         id: 1,
-        firstname: 'John',
-        lastname: 'Doe',
+        firstName: 'John',
+        lastName: 'Doe',
         gender: 'Male',
         email: 'john.doe@example.com',
         createdAt: '2021-01-01T00:00:00.000Z',
       };
 
-      const serialized = userSerializer.singleSerialize(user);
+      const serialized = userSerializer.serialize(user);
 
       expect(serialized).toEqual({
         id: 1,
@@ -52,16 +52,16 @@ describe('Serialization', () => {
     const users = [
       {
         id: 1,
-        firstname: 'John',
-        lastname: 'Doe',
+        firstName: 'John',
+        lastName: 'Doe',
         gender: 'Male',
         email: 'john@example.com',
         createdAt: '2021-01-01',
       },
       {
         id: 2,
-        firstname: 'Jane',
-        lastname: 'Doe',
+        firstName: 'Jane',
+        lastName: 'Doe',
         gender: 'Female',
         email: 'jane@example.com',
         createdAt: '2021-01-02',
