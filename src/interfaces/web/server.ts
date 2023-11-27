@@ -1,5 +1,6 @@
 import http from 'http';
 
+import { expressMiddleware } from '@apollo/server/express4';
 import compress from 'compression';
 import cors from 'cors';
 import express from 'express';
@@ -8,6 +9,7 @@ import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 
 import errorMiddleware from './middleware/error-handler';
+import { createApolloServer } from './plugins/graphql';
 import swaggerSpecs from './plugins/swagger';
 import { Router } from './router';
 
@@ -24,7 +26,7 @@ export default class Server {
     this.port = Number(process.env.PORT) || 5000;
     this.host = process.env.HOST || 'localhost';
 
-    this.httpServer = new http.Server(this.app);
+    this.httpServer = http.createServer(this.app);
 
     this.initMiddleware();
     this.initRouters();
@@ -36,7 +38,7 @@ export default class Server {
     return this._instance || (this._instance = new this());
   }
 
-  start(callback?: () => void): void {
+  public async start(callback?: () => void): Promise<void> {
     if (!callback) {
       console.info(`🌐 Web Server: http://${this.host}:${this.port}\n`);
     }
@@ -48,20 +50,44 @@ export default class Server {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: false }));
 
-    this.app.use(helmet());
-    this.app.use(helmet.xssFilter());
-    this.app.use(helmet.noSniff());
-    this.app.use(helmet.hidePoweredBy());
-    this.app.use(helmet.frameguard({ action: 'deny' }));
+    const isDevelopment = process.env.NODE_ENV === 'development';
+
+    this.app.use(
+      helmet({
+        crossOriginEmbedderPolicy: !isDevelopment,
+        contentSecurityPolicy: !isDevelopment,
+        frameguard: { action: 'deny' },
+        xssFilter: true,
+        noSniff: true,
+        hidePoweredBy: true,
+      }),
+    );
+
     this.app.use(morgan('dev'));
     this.app.use(compress());
     this.app.use(
       cors({
-        origin: true,
+        origin: '*',
         credentials: true,
       }),
     );
     this.app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerSpecs, { explorer: true }));
+
+    createApolloServer(this.httpServer)
+      .then(server => {
+        this.app.use(
+          '/',
+          cors({
+            origin: '*', // Para propósitos de desarrollo; especifica los dominios en producción
+            credentials: true,
+          }),
+          express.json(),
+          expressMiddleware(server, {
+            context: async ({ req }) => ({ token: req.headers.token }),
+          }),
+        );
+      })
+      .catch(e => console.log(e));
   }
 
   private errorHandling() {
