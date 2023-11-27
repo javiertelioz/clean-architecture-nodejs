@@ -1,8 +1,10 @@
+import 'reflect-metadata';
+
 import dotenv from 'dotenv';
 
 import Logger from './infrastructure/logger';
 import MongooseAdapter from './infrastructure/orm/mongoose';
-import RedisAdapter from './infrastructure/orm/redis';
+// import RedisAdapter from './infrastructure/orm/redis';
 import TypeORMAdapter from './infrastructure/orm/typeorm';
 import Server from './interfaces/web/server';
 
@@ -10,7 +12,7 @@ dotenv.config();
 
 const server = Server.instance;
 
-const redis = RedisAdapter.instance;
+// const redis = RedisAdapter.instance;
 const typeOrm = TypeORMAdapter.instance;
 const mongoose = MongooseAdapter.instance;
 
@@ -24,7 +26,7 @@ const bootstrap = async () => {
   Logger.log(`Launch Application: ${process.env.APP_NAME}`);
 
   try {
-    await redis.run();
+    // await redis.run();
     await typeOrm.run();
     await mongoose.run();
 
