@@ -67,7 +67,7 @@
     "@types/jsonwebtoken": "9.0.5",
     "@types/mongoose": "5.11.97",
     "@types/morgan": "1.9.9",
-    "@types/node": "20.10.2",
+    "@types/node": "20.10.3",
     "@types/redis": "4.0.11",
     "@types/supertest": "2.0.16",
     "@types/swagger-jsdoc": "6.0.4",
