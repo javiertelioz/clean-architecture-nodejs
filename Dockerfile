@@ -1,4 +1,4 @@
-FROM node:21.2-alpine3.17 AS builder
+FROM node:21.4-alpine3.17 AS builder
 
 WORKDIR /src
 
@@ -14,7 +14,7 @@ RUN apk add --no-cache --virtual .build-deps git && \
 
 RUN rm -rf node_modules
 
-FROM node:21.2-alpine3.17
+FROM node:21.4-alpine3.17
 
 WORKDIR /src
 
