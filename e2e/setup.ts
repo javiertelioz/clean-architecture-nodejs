@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import dotenv from 'dotenv';
 
 import Logger from '../src/infrastructure/logger';
