@@ -12,9 +12,6 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "strictPropertyInitialization": false,
-    "types": [
-      "reflect-metadata",
-    ]
   },
   "include": [
     "src/**/*.ts",
