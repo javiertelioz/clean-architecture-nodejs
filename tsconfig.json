@@ -4,6 +4,7 @@
     "lib": ["es5", "es6", "dom"],
     "target": "es2021",
     "outDir": "./dist",
+    "baseUrl": ".",
     "sourceMap": true,
     "moduleResolution": "node",
     "alwaysStrict": true,
@@ -11,6 +12,9 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "strictPropertyInitialization": false,
+    "types": [
+      "reflect-metadata",
+    ]
   },
   "include": [
     "src/**/*.ts",

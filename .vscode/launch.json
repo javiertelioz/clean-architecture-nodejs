@@ -6,7 +6,7 @@
     "configurations": [
       {
         "type": "node",
-        "name": "Clean Architecture Nodejs",
+        "name": "[Docker] Clean Architecture Nodejs",
         "request": "attach",
         "port": 9229,
         "address": "0.0.0.0",
@@ -15,6 +15,14 @@
         //"protocol": "inspector",
         "restart": true,
         "skipFiles": ["<node_internals>/**"]
+      },
+      {
+        "type": "node",
+        "name": "[Local] Clean Architecture Nodejs",
+        "request": "attach",
+        "port": 9229,
+        "restart": true,
+        "protocol": "inspector"
       }
     ]
 }

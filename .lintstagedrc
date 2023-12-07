@@ -2,7 +2,7 @@
   "{src,test,e2e}/**/*.{ts,js}": [
     "prettier --write",
     "npm run lint",
-    "jest --findRelatedTests --passWithNoTest",
+    "jest --findRelatedTests --passWithNoTests",
     "git add"
   ]
 }
