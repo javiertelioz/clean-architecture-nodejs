@@ -48,7 +48,7 @@
     "mongoose": "8.0.3",
     "morgan": "1.10.0",
     "pg": "8.11.3",
-    "redis": "4.6.11",
+    "redis": "4.6.12",
     "reflect-metadata": "0.2.1",
     "swagger-jsdoc": "6.2.8",
     "swagger-ui-express": "5.0.0",
