@@ -28,7 +28,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@apollo/server": "4.9.5",
+    "@apollo/server": "4.10.0",
     "accesscontrol": "2.2.1",
     "apollo-server-express": "3.13.0",
     "bcrypt": "5.1.1",
