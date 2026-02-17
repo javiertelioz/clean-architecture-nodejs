@@ -28,7 +28,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@apollo/server": "4.10.0",
+    "@apollo/server": "5.4.0",
     "accesscontrol": "2.2.1",
     "apollo-server-express": "3.13.0",
     "bcrypt": "5.1.1",
@@ -38,7 +38,7 @@
     "connect-redis": "7.1.1",
     "cors": "2.8.5",
     "dotenv": "16.4.2",
-    "express": "4.18.2",
+    "express": "4.22.0",
     "express-session": "1.18.0",
     "graphql": "16.8.1",
     "graphql-scalars": "1.22.4",
